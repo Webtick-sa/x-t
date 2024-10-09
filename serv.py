@@ -1,4 +1,16 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import socket
+import os
+from .db import db_con_r
+from datetime import datetime
+
+def get_ip():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
+    except:
+        return "127.0.0.1"
 
 
 class Serv(BaseHTTPRequestHandler):
@@ -16,5 +28,5 @@ class Serv(BaseHTTPRequestHandler):
         self.wfile.write(bytes(file_to_open, 'utf-8'))
 
 
-httpd = HTTPServer(('localhost', 8080), Serv)
+httpd = HTTPServer((get_ip(), 8080), Serv)
 httpd.serve_forever()
