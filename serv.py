@@ -25,6 +25,6 @@ class Serv(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(bytes(file_to_open, 'utf-8'))
 
-
-httpd = HTTPServer(('13.60.205.234', 80), Serv)
+print(get_ip())
+httpd = HTTPServer((get_ip(), 80), Serv)
 httpd.serve_forever()
