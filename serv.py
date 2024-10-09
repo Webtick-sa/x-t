@@ -5,7 +5,7 @@ import os
 def get_ip():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("8.8.8.8", 80))
+        s.connect(("8.8.8.8", 443))
         return s.getsockname()[0]
     except:
         return "127.0.0.1"
