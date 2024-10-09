@@ -1,8 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import socket
 import os
-from .db import db_con_r
-from datetime import datetime
 
 def get_ip():
     try:
